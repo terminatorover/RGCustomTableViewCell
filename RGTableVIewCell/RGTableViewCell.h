@@ -13,6 +13,8 @@
 @property id delegate;
 - (void)setTitles:(NSArray *)listOfTitles;
 - (void)setTitleColor:(UIColor *)color;
+- (void)setBoxColors:(NSArray *)listOfColors;
+- (UIView *)customContentView;
 @end
 
 @protocol RGTableViewCellProtocol <NSObject>
