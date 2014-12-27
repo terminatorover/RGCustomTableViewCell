@@ -122,6 +122,8 @@
     rgContentView = [[UIView alloc]initWithFrame:self.contentView.bounds];
     rgContentView.backgroundColor = CLOUD;
     [self.contentView addSubview:rgContentView];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(contentTap)];
+    [rgContentView addGestureRecognizer:tapGesture];
     
 }
 
@@ -153,6 +155,15 @@
      [self animateToTheLeft];
 }
 
+- (void)contentTap
+{
+    if(_delegate && [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
+    {
+        [_delegate cellTapped:self withIndex:3];
+    }
+    [self animateToTheLeft];
+}
+
 //----- method to recomute the frames of the boxes based on the panned distance
 - (void)layoutSubviews
 {
@@ -162,6 +173,10 @@
     secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
     thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
     rgContentView.frame = CGRectMake(3 * pannedDistance, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
+    
+    [firstView setNeedsLayout];
+    [secondView setNeedsLayout];
+    [thirdView setNeedsLayout];
     
 }
 
