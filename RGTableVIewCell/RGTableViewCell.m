@@ -16,14 +16,37 @@
     UIView *thirdView;
     
     //parameters for the cell
-    CGSize cellContainerViewSize;
+//    CGSize self.contentView.bounds.size;
     NSInteger pannedDistance;
+    
+    //+ means the last move was to the right and negative means left means
+    NSInteger lastMovement;
 }
 - (void)awakeFromNib {
     // Initialization code
     [self addPanGestureRecognizer];
-    [self setUpSubViews];
-    [self deduceCellGeoProperties];
+    
+
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if(self)
+    {
+         [self setUpSubViews];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self =  [super initWithCoder:aDecoder];
+    if(self)
+    {
+        [self setUpSubViews];
+    }
+    return self;
 }
 
 
@@ -40,20 +63,13 @@
     //--- inital panned distance = 0 (because the user hasn't panned yet)
     pannedDistance = 0;
     
-    firstView  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, pannedDistance, cellContainerViewSize.height)];
-    secondView = [[UIView alloc]initWithFrame:CGRectMake(pannedDistance, 0, pannedDistance, cellContainerViewSize.height)];
-    thirdView = [[UIView alloc]initWithFrame:CGRectMake(2 * pannedDistance, 0, pannedDistance, cellContainerViewSize.height)];
+    firstView  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height)];
+    secondView = [[UIView alloc]initWithFrame:CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height)];
+    thirdView = [[UIView alloc]initWithFrame:CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height)];
     
     [self.contentView addSubview:firstView];
     [self.contentView addSubview:secondView];
     [self.contentView addSubview:thirdView];
-}
-
-
-//-----deducing the cell's geometrical properities
-- (void)deduceCellGeoProperties
-{
-    cellContainerViewSize = self.contentView.bounds.size;
 }
 
 
@@ -62,13 +78,13 @@
 {
     [super layoutSubviews];//    NSLog(@"%d",pannedDistance);
 
-    firstView.frame = CGRectMake(0, 0, pannedDistance, cellContainerViewSize.height);
+    firstView.frame = CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height);
     firstView.backgroundColor = [UIColor redColor];
-    secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, cellContainerViewSize.height);
+    secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
     secondView.backgroundColor = [UIColor blueColor];
-    thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, cellContainerViewSize.height);
+    thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
     thirdView.backgroundColor = [UIColor greenColor];
-    NSLog(@"%@",NSStringFromCGRect((firstView.frame)));
+
 }
 
 
@@ -83,21 +99,73 @@
 #pragma mark - Handling Panning
 - (void)panning:(UIPanGestureRecognizer *)sender
 {
+    
     if( [sender translationInView:self.contentView].x > 0 )
     {
-        pannedDistance = [sender translationInView:self.contentView].x;
-    };
-    if(sender.state == UIGestureRecognizerStateBegan)
-    {
+        pannedDistance += ([sender translationInView:self.contentView].x / 3);
         [self setNeedsLayout];
     }
-    else if (sender.state == UIGestureRecognizerStateChanged)
+    
+    if (sender.state == UIGestureRecognizerStateBegan || sender.state == UIGestureRecognizerStateChanged )
     {
-         [self setNeedsLayout];
+        
+        pannedDistance += ([sender translationInView:self.contentView].x / 3);//do what the user expects regardless of the swipe direction
+        lastMovement = ([sender translationInView:self.contentView].x );
+        [self setNeedsLayout];
     }
     else if (sender.state == UIGestureRecognizerStateEnded)
     {
-         [self setNeedsLayout];
+        
+        if (rightMostPoint > seventyFiveWidthOfCell )
+        {
+            [UIView animateWithDuration:.4
+                             animations:^{
+                                 [UIView animateWithDuration:.4
+                                                  animations:^{
+                                                      [self setViewsToCenter];
+                                                  }];
+                             } completion:^(BOOL finished) {
+                                 [self setNeedsLayout];
+                             }];
+        }
+        else
+        {
+            [UIView animateWithDuration:.4
+                             animations:^{
+                                 [UIView animateWithDuration:.4
+                                                  animations:^{
+                                                      [self setViewsToTheLeft];
+                                                  }];
+                             } completion:^(BOOL finished) {
+                                 [self setNeedsLayout];
+                             }];
+        }
+        
     }
+    
+    [sender setTranslation:CGPointZero inView:self.contentView];
+    
+    
+}
+
+
+#pragma mark - Convnience Methods
+//moves all the views to the far left
+- (void)setViewsToTheLeft
+{
+    pannedDistance = 0 ;
+    firstView.frame = CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height);
+    secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
+    thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
+}
+
+//
+- (void)setViewsToCenter
+{
+    pannedDistance = self.contentView.bounds.size.width / 4 ;
+    firstView.frame = CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height);
+    secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
+    thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
+
 }
 @end
