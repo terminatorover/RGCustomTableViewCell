@@ -20,11 +20,17 @@
 
 @implementation RGTableViewCell
 {
+    
     UIPanGestureRecognizer *panGestureRecognizer;
+    //views/labels
     UIView *firstView;
     UIView *secondView;
     UIView *thirdView;
     UIView *rgContentView;
+    
+    UILabel *firstLabel;
+    UILabel *secondLabel;
+    UILabel *thirdLabel;
     
     //parameters for the cell
     NSInteger pannedDistance;
@@ -76,13 +82,32 @@
     firstView  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height)];
     secondView = [[UIView alloc]initWithFrame:CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height)];
     thirdView = [[UIView alloc]initWithFrame:CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height)];
+
+    //setting up labels
+    firstLabel = [[UILabel alloc]initWithFrame:[self containedBox]];
+    firstLabel.text = @"Archive";
+    [firstView addSubview:firstLabel];
     
+    secondLabel = [[UILabel alloc]initWithFrame:[self containedBox]];
+    secondLabel.text = @"Flag";
+    [secondView addSubview:secondLabel];
+    
+    thirdLabel = [[UILabel alloc]initWithFrame:[self containedBox]];
+    thirdLabel.text = @"More";
+    [thirdView addSubview:thirdLabel];
+    
+    
+    
+    firstView.backgroundColor = GREEN;
+    secondView.backgroundColor = POMEGRANATE;
+    thirdView.backgroundColor = CELL_BLUE;
+
     [self.contentView addSubview:firstView];
     [self.contentView addSubview:secondView];
     [self.contentView addSubview:thirdView];
     
     
-    //----setting up subviews
+    //----setti ng up subviews
     UITapGestureRecognizer *firstTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(firstTap)];
     [firstView addGestureRecognizer:firstTapGesture];
     
@@ -103,7 +128,7 @@
 #pragma mark - Tapped 
 - (void)firstTap
 {
-    if(_delegate || [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
+    if(_delegate && [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
     {
         [_delegate cellTapped:self withIndex:0];
     }
@@ -112,7 +137,7 @@
 
 - (void)secondTap
 {
-    if(_delegate || [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
+    if(_delegate && [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
     {
         [_delegate cellTapped:self withIndex:1];
     }
@@ -121,7 +146,7 @@
 
 - (void)thirdTap
 {
-    if(_delegate || [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
+    if(_delegate && [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
     {
         [_delegate cellTapped:self withIndex:2];
     }
@@ -134,15 +159,17 @@
     [super layoutSubviews];//    NSLog(@"%d",pannedDistance);
 
     firstView.frame = CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height);
-    firstView.backgroundColor = POMEGRANATE;
     secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
-    secondView.backgroundColor = SILVER;
     thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
-    thirdView.backgroundColor = CELL_BLUE;
     rgContentView.frame = CGRectMake(3 * pannedDistance, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
     
 }
 
+//----setting the texts of the labels for the 3 views
+- (void)setTitles:(NSArray *)listOfTitles
+{
+    
+}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -232,6 +259,20 @@
                      } completion:^(BOOL finished) {
                          [self setNeedsLayout];
                      }];
+}
+
+
+- (CGRect)containedBox
+{
+    NSInteger boxWidth = self.contentView.bounds.size.width ;
+    NSInteger boxHeight = self.contentView.bounds.size.height ;
+    
+    NSInteger smallerWidth = boxWidth / 8;
+    NSInteger smallerHeight = boxHeight / 3 ;
+
+    return CGRectMake(smallerWidth/4, smallerHeight, boxWidth /2 , boxHeight);
+    
+    
 }
 
 

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RGTableVIewCell/RGTableViewCell.m"
-            timestampString = "441396849.999172"
+            timestampString = "441399971.199818"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-awakeFromNib"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "-animateToTheCenter"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RGTableVIewCell/RGTableViewCell.m"
-            timestampString = "441396849.999172"
+            timestampString = "441399971.199818"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-layoutSubviews"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "-containedBox"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RGTableVIewCell/RGTableViewCell.m"
-            timestampString = "441396849.999172"
+            timestampString = "441398993.849703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "-panning:"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-setUpSubViews"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,60 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RGTableVIewCell/RGTableViewCell.m"
-            timestampString = "441396849.999172"
+            timestampString = "441399971.199818"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "-panning:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RGTableVIewCell/RGTableViewCell.m"
-            timestampString = "441396849.999172"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "-setViewsToTheLeft"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RGTableVIewCell/RGTableViewCell.m"
-            timestampString = "441397060.525616"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "-setViewsToCenter"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RGTableVIewCell/ViewController.m"
-            timestampString = "441396192.114385"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "-cellTapped:withIndex:"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "-containedBox"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

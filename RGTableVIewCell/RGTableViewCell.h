@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface RGTableViewCell : UITableViewCell
 @property id delegate;
+- (void)setTitles:(NSArray *)listOfTitles;
 @end
 
 @protocol RGTableViewCellProtocol <NSObject>
