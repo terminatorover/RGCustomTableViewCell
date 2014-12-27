@@ -14,6 +14,7 @@
 		A13C87EA1A4E616300B6CE99 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C87E91A4E616300B6CE99 /* Images.xcassets */; };
 		A13C87ED1A4E616300B6CE99 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13C87EB1A4E616300B6CE99 /* LaunchScreen.xib */; };
 		A13C87F91A4E616300B6CE99 /* RGTableVIewCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A13C87F81A4E616300B6CE99 /* RGTableVIewCellTests.m */; };
+		A168936A1A4E731200BA6A58 /* RGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A16893691A4E731200BA6A58 /* RGTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		A13C87F21A4E616300B6CE99 /* RGTableVIewCellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RGTableVIewCellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C87F71A4E616300B6CE99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A13C87F81A4E616300B6CE99 /* RGTableVIewCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RGTableVIewCellTests.m; sourceTree = "<group>"; };
+		A16893681A4E731200BA6A58 /* RGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGTableViewCell.h; sourceTree = "<group>"; };
+		A16893691A4E731200BA6A58 /* RGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				A13C87E31A4E616300B6CE99 /* ViewController.h */,
 				A13C87E41A4E616300B6CE99 /* ViewController.m */,
 				A13C87E61A4E616300B6CE99 /* Main.storyboard */,
+				A16893681A4E731200BA6A58 /* RGTableViewCell.h */,
+				A16893691A4E731200BA6A58 /* RGTableViewCell.m */,
 				A13C87E91A4E616300B6CE99 /* Images.xcassets */,
 				A13C87EB1A4E616300B6CE99 /* LaunchScreen.xib */,
 				A13C87DC1A4E616300B6CE99 /* Supporting Files */,
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A168936A1A4E731200BA6A58 /* RGTableViewCell.m in Sources */,
 				A13C87E51A4E616300B6CE99 /* ViewController.m in Sources */,
 				A13C87E21A4E616300B6CE99 /* AppDelegate.m in Sources */,
 				A13C87DF1A4E616300B6CE99 /* main.m in Sources */,
@@ -412,6 +418,7 @@
 				A13C87FE1A4E616300B6CE99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A13C87FF1A4E616300B6CE99 /* Build configuration list for PBXNativeTarget "RGTableVIewCellTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				A13C88011A4E616300B6CE99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
