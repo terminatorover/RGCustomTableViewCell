@@ -15,7 +15,7 @@
 #define SILVER [UIColor colorWithRed:189/255.0f green:195/255.0f blue:199/255.0f alpha:1.0f]
 #define ALIZARIN [UIColor colorWithRed:231/255.0f green:76/255.0f blue:60/255.0f alpha:1.0f]
 #define POMEGRANATE [UIColor colorWithRed:192/255.0f green:57/255.0f blue:43/255.0f alpha:1.0f]
-
+#define BELIZE_HOLE [UIColor colorWithRed:2/255.0f green:152/255.0f blue:11/255.0f alpha:1.0f];
 #import "RGTableViewCell.h"
 
 @implementation RGTableViewCell
@@ -98,8 +98,8 @@
     
     
     
-    firstView.backgroundColor = GREEN;
-    secondView.backgroundColor = POMEGRANATE;
+    firstView.backgroundColor = BELIZE_HOLE;
+    secondView.backgroundColor = BURNT_ORANGE;
     thirdView.backgroundColor = CELL_BLUE;
 
     [self.contentView addSubview:firstView];
@@ -183,7 +183,9 @@
 //----setting the texts of the labels for the 3 views
 - (void)setTitles:(NSArray *)listOfTitles
 {
-    
+    firstLabel.text = listOfTitles[0];
+    secondLabel.text = listOfTitles[1];
+    thirdLabel.text = listOfTitles[2];
 }
 
 

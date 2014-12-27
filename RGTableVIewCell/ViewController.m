@@ -46,6 +46,7 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.delegate = self;
+    [cell setTitles:@[@"A",@"B",@"C"]];
 }
 
 - (void)didReceiveMemoryWarning {
