@@ -46,7 +46,8 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.delegate = self;
-    [cell setTitles:@[@"A",@"B",@"C"]];
+    [cell setTitles:@[@"Swag",@"On",@"Deck"]];
+    [cell setTitleColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning {

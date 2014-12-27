@@ -5,6 +5,9 @@
 //  Created by ROBERA GELETA on 12/26/14.
 //  Copyright (c) 2014 ROBERA GELETA. All rights reserved.
 //
+#define TORTO [UIColor colorWithRed:26/255.0f green:188/255.0f blue:156/255.0f alpha:1.0f]
+#define BLUE  [UIColor colorWithRed:52/255.0f green:152/255.0f blue:219/255.0f alpha:1.0f]
+#define REDISH [UIColor colorWithRed:231/255.0f green:76/255.0f blue:60/255.0f alpha:1.0f]
 
 #define CELL_BLUE [UIColor colorWithRed:70.0/255.0 green:99/255.0 blue:127.0/255.0 alpha:1]
 #define BURNT_ORANGE [UIColor colorWithRed:211.0/255.0 green:84/255.0 blue:0.0/255.0 alpha:1]
@@ -85,22 +88,22 @@
 
     //setting up labels
     firstLabel = [[UILabel alloc]initWithFrame:[self containedBox]];
-    firstLabel.text = @"Archive";
+//    firstLabel.textColor = [UIColor whiteColor];
     [firstView addSubview:firstLabel];
     
     secondLabel = [[UILabel alloc]initWithFrame:[self containedBox]];
-    secondLabel.text = @"Flag";
+//    secondLabel.textColor = [UIColor whiteColor];
     [secondView addSubview:secondLabel];
     
     thirdLabel = [[UILabel alloc]initWithFrame:[self containedBox]];
-    thirdLabel.text = @"More";
+//    thirdLabel.textColor = [UIColor whiteColor];
     [thirdView addSubview:thirdLabel];
     
     
     
-    firstView.backgroundColor = BELIZE_HOLE;
-    secondView.backgroundColor = BURNT_ORANGE;
-    thirdView.backgroundColor = CELL_BLUE;
+    firstView.backgroundColor = TORTO;
+    secondView.backgroundColor = REDISH;
+    thirdView.backgroundColor = BLUE;
 
     [self.contentView addSubview:firstView];
     [self.contentView addSubview:secondView];
@@ -188,6 +191,12 @@
     thirdLabel.text = listOfTitles[2];
 }
 
+- (void)setTitleColor:(UIColor *)color
+{
+    firstLabel.textColor = color;
+    secondLabel.textColor = color;
+    thirdLabel.textColor = color;
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

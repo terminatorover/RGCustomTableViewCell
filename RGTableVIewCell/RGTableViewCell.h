@@ -12,6 +12,7 @@
 @interface RGTableViewCell : UITableViewCell
 @property id delegate;
 - (void)setTitles:(NSArray *)listOfTitles;
+- (void)setTitleColor:(UIColor *)color;
 @end
 
 @protocol RGTableViewCellProtocol <NSObject>
