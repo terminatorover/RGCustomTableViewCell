@@ -46,8 +46,12 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.delegate = self;
-    [cell setTitles:@[@"Swag",@"On",@"Deck"]];
+    [cell setTitles:@[@"Build",@"Great",@"Stuff"]];
     [cell setTitleColor:[UIColor whiteColor]];
+    UIView *contentView = [cell customContentView];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(40, 0, 300, 100)];
+    label.text = self.listOfData[indexPath.row];
+    [contentView addSubview:label];
 }
 
 - (void)didReceiveMemoryWarning {
