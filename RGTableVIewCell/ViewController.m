@@ -9,7 +9,7 @@
 
 #import "ViewController.h"
 #import "RGTableViewCell.h"
-@interface ViewController ()
+@interface ViewController () <RGTableViewCellProtocol>
 @property (nonatomic) NSArray *listOfData;
 @end
 
@@ -45,7 +45,7 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)configureCell:(RGTableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    cell.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +53,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     // Dispose of any resources that can be recreated.
 }
 
+- (void)cellTapped:(RGTableViewCell *)cell withIndex:(NSInteger )index
+{
+    
+}
 
 
 #pragma mark - Lazy Loading 

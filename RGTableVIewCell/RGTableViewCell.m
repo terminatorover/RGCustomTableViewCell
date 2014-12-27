@@ -6,6 +6,16 @@
 //  Copyright (c) 2014 ROBERA GELETA. All rights reserved.
 //
 
+#define CELL_BLUE [UIColor colorWithRed:70.0/255.0 green:99/255.0 blue:127.0/255.0 alpha:1]
+#define BURNT_ORANGE [UIColor colorWithRed:211.0/255.0 green:84/255.0 blue:0.0/255.0 alpha:1]
+#define GREEN  [UIColor colorWithRed:120/255.0f green:212/255.0f blue:140/255.0f alpha:1.0f]
+#define MARRON [UIColor colorWithRed:127/255.0f green:70/255.0f blue:77/255.0f alpha:1.0f]
+#define PUMPKIN [UIColor colorWithRed:211/255.0f green:84/255.0f blue:0/255.0f alpha:1.0f]
+#define CLOUD [UIColor colorWithRed:236/255.0f green:240/255.0f blue:241/255.0f alpha:1.0f]
+#define SILVER [UIColor colorWithRed:189/255.0f green:195/255.0f blue:199/255.0f alpha:1.0f]
+#define ALIZARIN [UIColor colorWithRed:231/255.0f green:76/255.0f blue:60/255.0f alpha:1.0f]
+#define POMEGRANATE [UIColor colorWithRed:192/255.0f green:57/255.0f blue:43/255.0f alpha:1.0f]
+
 #import "RGTableViewCell.h"
 
 @implementation RGTableViewCell
@@ -14,6 +24,7 @@
     UIView *firstView;
     UIView *secondView;
     UIView *thirdView;
+    UIView *rgContentView;
     
     //parameters for the cell
     NSInteger pannedDistance;
@@ -80,6 +91,13 @@
     
     UITapGestureRecognizer *thirdTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(thirdTap)];
     [thirdView addGestureRecognizer:thirdTapGesture];
+    
+    
+    //---------The 'Real' Content View for this cell
+    rgContentView = [[UIView alloc]initWithFrame:self.contentView.bounds];
+    rgContentView.backgroundColor = CLOUD;
+    [self.contentView addSubview:rgContentView];
+    
 }
 
 #pragma mark - Tapped 
@@ -116,11 +134,12 @@
     [super layoutSubviews];//    NSLog(@"%d",pannedDistance);
 
     firstView.frame = CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height);
-    firstView.backgroundColor = [UIColor redColor];
+    firstView.backgroundColor = POMEGRANATE;
     secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
-    secondView.backgroundColor = [UIColor blueColor];
+    secondView.backgroundColor = SILVER;
     thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
-    thirdView.backgroundColor = [UIColor greenColor];
+    thirdView.backgroundColor = CELL_BLUE;
+    rgContentView.frame = CGRectMake(3 * pannedDistance, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
     
 }
 
@@ -175,6 +194,7 @@
     firstView.frame = CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height);
     secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
     thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
+    rgContentView.frame = CGRectMake(0, 0,self.contentView.bounds.size.width, self.contentView.bounds.size.height);
 }
 
 //
@@ -184,6 +204,7 @@
     firstView.frame = CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height);
     secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
     thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
+    rgContentView.frame = CGRectMake(3 * pannedDistance, 0,self.contentView.bounds.size.width, self.contentView.bounds.size.height);
 }
 
 - (void)animateToTheLeft
