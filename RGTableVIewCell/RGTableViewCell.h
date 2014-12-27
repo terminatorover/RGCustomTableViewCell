@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface RGTableViewCell : UITableViewCell
+@property id delegate;
+@end
+
+@protocol RGTableViewCellProtocol <NSObject>
+
+- (void)cellTapped:(RGTableViewCell *)cell withIndex:(NSInteger )index;
 
 @end

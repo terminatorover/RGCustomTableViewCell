@@ -16,7 +16,6 @@
     UIView *thirdView;
     
     //parameters for the cell
-//    CGSize self.contentView.bounds.size;
     NSInteger pannedDistance;
     
     //+ means the last move was to the right and negative means left means
@@ -70,8 +69,46 @@
     [self.contentView addSubview:firstView];
     [self.contentView addSubview:secondView];
     [self.contentView addSubview:thirdView];
+    
+    
+    //----setting up subviews
+    UITapGestureRecognizer *firstTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(firstTap)];
+    [firstView addGestureRecognizer:firstTapGesture];
+    
+    UITapGestureRecognizer *secondTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(secondTap)];
+    [secondView addGestureRecognizer:secondTapGesture];
+    
+    UITapGestureRecognizer *thirdTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(thirdTap)];
+    [thirdView addGestureRecognizer:thirdTapGesture];
 }
 
+#pragma mark - Tapped 
+- (void)firstTap
+{
+    if(_delegate || [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
+    {
+        [_delegate cellTapped:self withIndex:0];
+    }
+    [self animateToTheLeft];
+}
+
+- (void)secondTap
+{
+    if(_delegate || [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
+    {
+        [_delegate cellTapped:self withIndex:1];
+    }
+    [self animateToTheLeft];
+}
+
+- (void)thirdTap
+{
+    if(_delegate || [_delegate respondsToSelector:@selector(cellTapped:withIndex:)])
+    {
+        [_delegate cellTapped:self withIndex:2];
+    }
+     [self animateToTheLeft];
+}
 
 //----- method to recomute the frames of the boxes based on the panned distance
 - (void)layoutSubviews
@@ -84,7 +121,7 @@
     secondView.backgroundColor = [UIColor blueColor];
     thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
     thirdView.backgroundColor = [UIColor greenColor];
-
+    
 }
 
 
@@ -115,37 +152,18 @@
     }
     else if (sender.state == UIGestureRecognizerStateEnded)
     {
-        
+        NSInteger seventyFiveWidthOfCell = (3 * self.contentView.bounds.size.width) / 4;
+        NSInteger rightMostPoint = thirdView.bounds.size.width + thirdView.frame.origin.x;
         if (rightMostPoint > seventyFiveWidthOfCell )
         {
-            [UIView animateWithDuration:.4
-                             animations:^{
-                                 [UIView animateWithDuration:.4
-                                                  animations:^{
-                                                      [self setViewsToCenter];
-                                                  }];
-                             } completion:^(BOOL finished) {
-                                 [self setNeedsLayout];
-                             }];
+            [self animateToTheCenter];
         }
         else
         {
-            [UIView animateWithDuration:.4
-                             animations:^{
-                                 [UIView animateWithDuration:.4
-                                                  animations:^{
-                                                      [self setViewsToTheLeft];
-                                                  }];
-                             } completion:^(BOOL finished) {
-                                 [self setNeedsLayout];
-                             }];
+            [self animateToTheLeft];
         }
-        
     }
-    
     [sender setTranslation:CGPointZero inView:self.contentView];
-    
-    
 }
 
 
@@ -166,6 +184,35 @@
     firstView.frame = CGRectMake(0, 0, pannedDistance, self.contentView.bounds.size.height);
     secondView.frame = CGRectMake(pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
     thirdView.frame = CGRectMake(2 * pannedDistance, 0, pannedDistance, self.contentView.bounds.size.height);
+}
+
+- (void)animateToTheLeft
+{
+    [UIView animateWithDuration:.4
+                     animations:^{
+                         [UIView animateWithDuration:.4
+                                          animations:^{
+                                              [self setViewsToTheLeft];
+                                          }];
+                     } completion:^(BOOL finished) {
+                         [self setNeedsLayout];
+                     }];
 
 }
+
+- (void)animateToTheCenter
+{
+    [UIView animateWithDuration:.4
+                     animations:^{
+                         [UIView animateWithDuration:.4
+                                          animations:^{
+                                              [self setViewsToCenter];
+                                          }];
+                     } completion:^(BOOL finished) {
+                         [self setNeedsLayout];
+                     }];
+}
+
+
+
 @end
