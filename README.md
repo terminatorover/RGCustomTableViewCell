@@ -1,10 +1,10 @@
 RGCustomTableViewCell
 =====================
-///---->To set the Texts and text color for the 3 cells
+///---->To set the Texts and text color for the 3 cells(UIColor)
 - (void)setTitles:(NSArray *)listOfTitles;
 - (void)setTitleColor:(UIColor *)color;
 
-//----> to set the colors for the cells themeselves
+//----> to set the colors for the cells themeselves(UIColor)
 - (void)setBoxColors:(NSArray *)listOfColors;
 //----> 
 to get access to the subview to which you'll add your content 
